@@ -17,6 +17,7 @@ app.post("/create", function(req, res){
   db.Url.create({"wholeurl": req.body.fullurl}).done(function(err,data){
     if(err){
       var errorMsg = {msg: err.errors[0].message};
+      console.log(errorMsg);
       res.render('create', { errorMsg: errorMsg});
 
       return;}
