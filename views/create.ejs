@@ -1,8 +1,11 @@
 <% include header %>
-
+  <% if(typeof err === "undefined") { %>
+     <p><%= errorMsg.msg %></p>
+ <% } else { %>
 
   </div>
   <h1>Thank you your url is <a href=<%=data.tinyurl%>>localhost:3000/<%=data.tinyurl %></a></h1>
 </div>
+<% } %>
 
 <% include footer %>

@@ -15,6 +15,11 @@ app.get('/', function(req, res){
 
 app.post("/create", function(req, res){
   db.Url.create({"wholeurl": req.body.fullurl}).done(function(err,data){
+    if(err){
+      var errorMsg = {msg: err.errors[0].message};
+      res.render('create', { errorMsg: errorMsg});
+
+      return;}
     var hashdata = hashids.encode(data.id);
     console.log(hashdata);
     data.tinyurl = hashdata;
@@ -26,12 +31,12 @@ app.post("/create", function(req, res){
 
 app.get("/:tinyurl", function(req, res){
   db.Url.find({ where: {tinyurl: req.params.tinyurl } }).done(function(error, data){
-    res.redirect(data.wholeurl);
+    res.redirect("Http://" + data.wholeurl);
   })
 });
 
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Ready to work")
 });

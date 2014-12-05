@@ -2,7 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Url = sequelize.define("Url", {
-    wholeurl: DataTypes.STRING,
+
+
+    wholeurl: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: { msg: "Please type in a url"},
+        isUrl: { msg: "Please type in url format"}
+      }
+    },
     tinyurl: DataTypes.STRING
   }, {
     classMethods: {
