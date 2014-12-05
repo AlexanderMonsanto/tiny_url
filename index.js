@@ -32,7 +32,7 @@ app.post("/create", function(req, res){
 
 app.get("/:tinyurl", function(req, res){
   db.Url.find({ where: {tinyurl: req.params.tinyurl } }).done(function(error, data){
-    res.redirect("Http://" + data.wholeurl);
+    res.redirect(data.wholeurl);
   })
 });
 
