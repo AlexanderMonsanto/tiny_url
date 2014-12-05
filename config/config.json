@@ -1,0 +1,18 @@
+{
+  "development": {
+    "database": "littleurl",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "littleurl_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "littleurl_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
+
